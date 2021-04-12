@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
 interface BookmarkProps {
   label: string;
@@ -12,23 +12,15 @@ function BookmarkInput() {
   );
 }
 
-function usePrevious(value: any) {
-  const ref = useRef();
-
-  useEffect(() => {
-    ref.current = value;
-  }, [value]);
-
-  return ref.current;
-}
-
 export function Bookmark({ label, onDelete }: BookmarkProps) {
   return (
     <>
       <li>
         <label className="bookmark">{label}</label>
         <BookmarkInput />
-        <button onClick={onDelete}>x</button>
+        <button className="btn-small" onClick={onDelete}>
+          X
+        </button>
       </li>
     </>
   );

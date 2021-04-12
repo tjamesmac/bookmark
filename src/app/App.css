@@ -37,9 +37,27 @@
   }
 }
 
+.btn {
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid indianred !important;
+  border-radius: 0.25rem;
+  outline: none;
+  background-color: indianred;
+}
+.btn-small {
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid indianred !important;
+  border-radius: 0.25rem;
+  outline: none;
+  background-color: indianred;
+}
+
 .bookmarks {
   list-style: none;
 }
+
 .bookmark {
   list-style: none;
   display: flex;
