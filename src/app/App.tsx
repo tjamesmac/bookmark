@@ -1,7 +1,7 @@
 import { useState, useReducer } from "react";
 import { Bookmark } from "../components/bookmark";
 import bookmarkReducer, { AddAction, DeleteAction } from "./reducer";
-import "./App.css";
+import { Wrapper, Container, Header, Button, List, Input } from "./App.style";
 
 interface AddboomarkProps {
   handleClick: () => void;
@@ -12,7 +12,7 @@ export type Bookmarks = {
 };
 
 function Addbookmark({ handleClick }: AddboomarkProps) {
-  return <button onClick={handleClick}>+</button>;
+  return <Button onClick={handleClick}>+</Button>;
 }
 
 function initialState() {
@@ -64,32 +64,32 @@ function BookmarkApp() {
 
   return (
     <>
-      <button className="btn" onClick={() => canAdd((prev) => !prev)}>
-        +
-      </button>
-      {add && (
-        <>
-          <input onChange={({ target: { value } }) => setLabel(value)} />
-          <Addbookmark handleClick={handleClick} />
-        </>
-      )}
-      <ul className="bookmarks">
-        {state.map(({ label }: Bookmarks) => (
-          <Bookmark key={label} label={label} onDelete={handleDelete} />
-        ))}
-      </ul>
+      <Container>
+        <Button onClick={() => canAdd((prev) => !prev)}>{"+"}</Button>
+        {add && (
+          <>
+            <Input onChange={({ target: { value } }) => setLabel(value)} />
+            <Addbookmark handleClick={handleClick} />
+          </>
+        )}
+        <List>
+          {state.map(({ label }: Bookmarks) => (
+            <Bookmark key={label} label={label} onDelete={handleDelete} />
+          ))}
+        </List>
+      </Container>
     </>
   );
 }
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <Wrapper className="App">
+      <Header className="App-header">
         <h1>Bookmarks</h1>
         <BookmarkApp />
-      </header>
-    </div>
+      </Header>
+    </Wrapper>
   );
 }
 
