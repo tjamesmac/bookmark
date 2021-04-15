@@ -4,7 +4,7 @@ import { Button } from "../../app/App.style";
 
 interface BookmarkProps {
   label: string;
-  onDelete: () => void;
+  onDelete: (x: string) => void;
 }
 
 function BookmarkInput() {
@@ -18,11 +18,11 @@ export function Bookmark({ label, onDelete }: BookmarkProps) {
   return (
     <>
       <ListItem>
-        <Label className="bookmark">{label}</Label>
-        <BookmarkInput />
-        <Button className="btn-small" onClick={onDelete}>
+        <Button className="btn-small" onClick={() => onDelete(label)}>
           X
         </Button>
+        <BookmarkInput />
+        <Label className="bookmark">{label}</Label>
       </ListItem>
     </>
   );
