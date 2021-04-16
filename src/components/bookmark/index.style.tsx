@@ -9,13 +9,12 @@ export const ListItem = styled.li`
 `;
 
 export const Label = styled.label`
-  font-size: 2.5rem;
+  font-size: 32px;
   flex: 0 1 20%;
   white-space: nowrap;
 `;
 
 export const Input = styled.input`
-  flex: 1 0 50%;
-  font-size: 2rem;
-  padding: 0 1rem;
+  flex: 1 1 50%;
+  font-size: 24px;
 `;

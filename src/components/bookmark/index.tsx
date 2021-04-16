@@ -17,12 +17,12 @@ function BookmarkInput() {
 export function Bookmark({ label, onDelete }: BookmarkProps) {
   return (
     <>
+      <Label className="bookmark">{label}</Label>
       <ListItem>
         <Button className="btn-small" onClick={() => onDelete(label)}>
           X
         </Button>
         <BookmarkInput />
-        <Label className="bookmark">{label}</Label>
       </ListItem>
     </>
   );

@@ -1,15 +1,10 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 1rem 3rem;
   background-color: #282c34;
   min-height: 100vh;
-  max-width: 100vw;
   color: white;
 `;
 
@@ -23,13 +18,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 75%;
 `;
 
 export const Input = styled.input`
-  padding: 0rem 1rem;
   flex: 1 1 50%;
-  font-size: 2rem;
+  font-size: 24px;
 `;
 
 enum sizes {
