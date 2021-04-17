@@ -27,7 +27,7 @@ export default function bookmarkReducer(
 ): Bookmarks[] {
   switch (action.type) {
     case ActionKind.ADD:
-      return [...state, { label: action.payload }];
+      return [...state, { label: action.payload, value: "" }];
     case ActionKind.DELETE:
       return state.filter(({ label }) => label !== action.payload);
     default:

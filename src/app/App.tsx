@@ -9,38 +9,42 @@ interface AddboomarkProps {
 
 export type Bookmarks = {
   label: string;
+  value: string;
 };
+
+const storageKey: string = "books";
 
 function Addbookmark({ handleClick }: AddboomarkProps) {
   return <Button onClick={handleClick}>+</Button>;
 }
 
 function initialState() {
-  const storage = window.localStorage.getItem("books");
+  const storage = window.localStorage.getItem(storageKey);
   return storage ? JSON.parse(storage) : [];
 }
 
 function addToStorage(label: string): void {
   const storage = window.localStorage;
-  const current = storage.getItem("books");
+  const current = storage.getItem(storageKey);
   if (current) {
     const books = JSON.parse(current);
-    storage.setItem("books", JSON.stringify([...books, { label }]));
+    storage.setItem(
+      storageKey,
+      JSON.stringify([...books, { label, value: "" }])
+    );
   } else {
-    storage.setItem("books", JSON.stringify([{ label }]));
+    storage.setItem(storageKey, JSON.stringify([{ label, value: "" }]));
   }
 }
 
 function deleteFromStorage(label: string): void {
   const storage = window.localStorage;
-  const current = storage.getItem("books");
+  const current = storage.getItem(storageKey);
   if (current) {
     const books = JSON.parse(current).filter(
       (item: Bookmarks) => item.label !== label
     );
-    storage.setItem("books", JSON.stringify(books));
-  } else {
-    storage.setItem("books", JSON.stringify([{ label }]));
+    storage.setItem(storageKey, JSON.stringify(books));
   }
 }
 
@@ -65,8 +69,13 @@ function BookmarkApp() {
     <>
       <Container>
         <List>
-          {state.map(({ label }: Bookmarks) => (
-            <Bookmark key={label} label={label} onDelete={handleDelete} />
+          {state.map(({ label, value }: Bookmarks) => (
+            <Bookmark
+              key={label}
+              label={label}
+              value={value}
+              onDelete={handleDelete}
+            />
           ))}
         </List>
         <AddGroup>
